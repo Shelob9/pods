@@ -3213,7 +3213,24 @@ class Pods implements Iterator {
 
 		$pod =& $this;
 
-		$params = apply_filters( 'pods_filters_params', $params, $pod );
+        /**
+         * Override parameters.
+         *
+         * This filter can be used to change the parameters set when the method is called.
+         *
+         * @since unknown
+         *
+         * @param array params {
+         *     The parameters to be used.
+         *
+         *     @type string|array $feilds Comma-separated list or array of field names.
+         *     @type string $label  Label of filter submit button.
+         *     @type string $action Action to use in form action="".
+         *     @type string $search Search string in search field.
+         * }
+         * @param object $pod The current Pods Object
+         */
+        $params = apply_filters( 'pods_filters_params', $params, $pod );
 
 		$fields = $params[ 'fields' ];
 
